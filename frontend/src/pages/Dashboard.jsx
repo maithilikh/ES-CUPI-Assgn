@@ -4,7 +4,7 @@ import api from "../api/api";
 
 import { Navigate } from "react-router-dom";
 
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavBar";
 
 import StockCard from "../components/StockCard";
 
