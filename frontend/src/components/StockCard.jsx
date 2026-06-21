@@ -2,7 +2,7 @@ import StockChart from "./StockChart";
 
 function StockCard({ stock }) {
   return (
-    <div className="bg-white p-4 rounded shadow">
+    <div className="bg-white p-5 rounded-xl shadow">
       <h3 className="text-lg font-bold">{stock.ticker}</h3>
 
       <p>${stock.price}</p>

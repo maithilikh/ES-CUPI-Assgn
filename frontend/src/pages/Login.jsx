@@ -6,6 +6,9 @@ function Login() {
   if (localStorage.getItem("token")) {
     return <Navigate to="/dashboard" />;
   }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
   const [email, setEmail] = useState("");
 
   const nav = useNavigate();
@@ -18,6 +21,11 @@ function Login() {
 
       if (!email.trim()) {
         setErr("Enter an email");
+        return;
+      }
+
+      if (!emailRegex.test(email)) {
+        setErr("Please enter a valid email");
         return;
       }
 
