@@ -4,7 +4,7 @@
 
 This project is a real-time stock broker client dashboard built using React, Node.js, Express, MongoDB, and Socket.IO.
 
-Users can log in using their email address and a simulated OTP flow, subscribe to supported stocks, and receive live stock price updates without refreshing the page.
+Users can log in using their email address and an OTP flow, subscribe to supported stocks, and receive live stock price updates without refreshing the page.
 
 Stock prices are simulated using a random price generator and are updated automatically every 2 seconds.
 
@@ -169,9 +169,15 @@ Create a `.env` file:
 ```env
 PORT=5000
 
+CLIENT_URL=http://localhost:5173
+
 MONGO_URI=mongodb://127.0.0.1:27017/stock-dashboard
 
 JWT_SECRET=mysecretkey
+
+# Email credentials used if you enable real email delivery
+# EMAIL_USER=your-email@example.com
+# EMAIL_PASS=your-email-password
 ```
 
 Start backend:
@@ -216,23 +222,15 @@ Vite will provide a local URL similar to:
 http://localhost:5173
 ```
 
-Open it in your browser.
+Create a `.env` file for the frontend (local development):
 
----
-
-## How OTP Works
-
-To keep the project simple, OTPs are not sent through email.
-
-When requesting an OTP, the backend prints it in the terminal.
-
-Example:
-
-```text
-OTP for trial0@gmail.com: 482391
+```env
+VITE_API_URL=http://localhost:5000
 ```
 
-Use this OTP on the verification screen.
+For deployments, set `VITE_API_URL` to your backend origin and `CLIENT_URL` in the backend `.env` to your frontend origin (or a comma-separated list of allowed origins).
+
+Open it in your browser.
 
 ---
 
@@ -286,11 +284,10 @@ Both dashboards will receive different stock updates at the same time.
 
 ---
 
-![alt text](image.png)
+The website has been hosted on Render: https://es-cupi-assgn.onrender.com
 
 ## Assumptions
 
-- OTP delivery is simulated through console logs.
 - Stock prices are generated locally.
 - Supported stocks are fixed.
 - MongoDB is running locally.
@@ -301,7 +298,6 @@ Both dashboards will receive different stock updates at the same time.
 
 Possible enhancements include:
 
-- Email delivery for OTPs
 - Redis caching
 - User profile management
 - Real market data integration
